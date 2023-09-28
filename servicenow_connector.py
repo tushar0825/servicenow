@@ -917,7 +917,7 @@ class ServicenowConnector(BaseConnector):
             return action_result.set_status(phantom.APP_ERROR, SERVICENOW_AUTH_ERROR_MESSAGE)
 
         if not is_sys_id:
-            params = {'sysparm_query': 'number={0}'.format(sys_id)}
+            params = {'sysparm_query': 'number={0}'.format(sys_id), 'sysparm_include_tasks': 'true'}
             endpoint = SERVICENOW_TABLE_ENDPOINT.format(table)
             ret_val, response = self._make_rest_call_helper(action_result, endpoint, auth=auth, headers=headers, params=params)
 
